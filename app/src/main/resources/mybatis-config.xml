@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+    PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+  <!-- See http://mybatis.github.io/mybatis-3/configuration.html#settings -->
+  <settings>
+    <!-- changes from the defaults -->
+    <setting name="vfsImpl" value="org.mybatis.spring.boot.autoconfigure.SpringBootVFS"/>
+    <setting name="lazyLoadingEnabled" value="false"/>
+  </settings>
+
+  <typeAliases>
+    <package name="com.lms.book_mgmt.model"/>
+    <package name="com.lms.user_mgmt.model"/>
+    <package name="com.lms.borrowing_mgmt.model"/>
+  </typeAliases>
+
+  <mappers>
+    <mapper resource="mapper/BookMapper.xml"/>
+    <mapper resource="mapper/MemberMapper.xml"/>
+    <mapper resource="mapper/BorrowingMapper.xml"/>
+  </mappers>
+
+</configuration>
+

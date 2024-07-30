@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lms.member_mgmt.dao.MemberDao">
+
+  <insert id="insertMember" parameterType="com.lms.member_mgmt.model.Member">
+    INSERT INTO members (name, email, phone, address)
+    VALUES (#{name}, #{email}, #{phone}, #{address})
+  </insert>
+
+  <delete id="deleteMember" parameterType="long">
+    DELETE FROM members WHERE id=#{id}
+  </delete>
+
+  <select id="viewMember" parameterType="long" resultType="com.lms.member_mgmt.model.Member">
+    SELECT * FROM members WHERE id=#{id}
+  </select>
+
+
+</mapper>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lms.borrowing_mgmt.dao.BorrowingDao">
+
+  <insert id="insertBorrowingRecord" parameterType="com.lms.borrowing_mgmt.model.Borrowing">INSERT INTO
+    borrowing_records (member_id, book_id, borrowed_at, due_date, returned_at) VALUES (#{memberId}, #{bookId},
+    #{borrowedAt}, #{dueDate}, #{returnedAt})
+  </insert>
+
+  <select id="findBorrowingRecord" parameterType="map" resultType="com.lms.borrowing_mgmt.model.Borrowing">SELECT
+    *
+    FROM borrowing_records WHERE member_id=#{memberId} AND book_id=#{bookId} AND returned_at IS NULL
+  </select>
+
+  <update id="updateBorrowingRecord" parameterType="com.lms.borrowing_mgmt.model.Borrowing">UPDATE
+    borrowing_records
+    SET member_id=#{memberId}, book_id=#{bookId}, borrowed_at=#{borrowedAt}, due_date=#{dueDate},
+    returned_at=#{returnedAt} WHERE id=#{id}
+  </update>
+
+
+  <select id="findBorrowingHistoryAndDueDates" parameterType="long"
+          resultType="com.lms.borrowing_mgmt.model.Borrowing">SELECT * FROM borrowing_records WHERE
+    member_id=#{memberId}
+  </select>
+</mapper>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lms.book_mgmt.dao.BookDao">
+
+  <insert id="insertBook" parameterType="com.lms.book_mgmt.model.Book">
+    INSERT INTO books (title, author, genre, isbn, available)
+    VALUES (#{title}, #{author}, #{genre}, #{isbn}, #{available})
+  </insert>
+
+  <update id="updateBook" parameterType="com.lms.book_mgmt.model.Book">UPDATE books SET title=#{title},
+    author=#{author}, genre=#{genre}, isbn=#{isbn}, available=#{available} WHERE id=#{id}
+  </update>
+
+
+  <delete id="deleteBook">
+    DELETE FROM books WHERE id=#{id}
+  </delete>
+
+  <select id="findBookById" parameterType="long" resultType="com.lms.book_mgmt.model.Book">
+    SELECT * FROM books WHERE id=#{id}
+  </select>
+
+
+  <select id="checkAvailability" parameterType="long" resultType="boolean">
+    SELECT available FROM books WHERE id=#{id}
+  </select>
+
+  <update id="changeAvailability">
+    UPDATE books SET available=#{status} WHERE id=#{id}
+  </update>
+
+</mapper>
